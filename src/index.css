@@ -3,18 +3,21 @@
 @theme {
   --font-sans: 'Segoe UI', system-ui, Roboto, sans-serif;
 
-  --color-sand-50: #fffaf3;
-  --color-sand-100: #fdf1e0;
-  --color-terracotta-50: #fef4ee;
-  --color-terracotta-100: #fce6d5;
-  --color-terracotta-400: #f0975f;
-  --color-terracotta-500: #e97b3a;
-  --color-terracotta-600: #d4632a;
-  --color-terracotta-700: #b04d1f;
-  --color-teal-500: #2f8f86;
-  --color-teal-600: #237269;
-  --color-ink-700: #3a2f28;
-  --color-ink-900: #241c17;
+  --color-navy-950: #05070f;
+  --color-navy-900: #0a0f1e;
+  --color-navy-800: #111a30;
+  --color-navy-700: #1a2540;
+  --color-navy-600: #263452;
+
+  --color-sky-300: #7dd3fc;
+  --color-sky-400: #38bdf8;
+  --color-sky-500: #0ea5e9;
+  --color-sky-600: #0284c7;
+
+  --color-mist-50: #f4f8fc;
+  --color-mist-200: #cbd8ec;
+  --color-mist-300: #94a7c7;
+  --color-mist-400: #6b7f9f;
 }
 
 html {
@@ -23,8 +26,9 @@ html {
 
 body {
   margin: 0;
-  background: linear-gradient(180deg, #fffaf3 0%, #fdf1e0 100%);
-  color: var(--color-ink-900);
+  background: radial-gradient(circle at 20% 0%, #16213f 0%, #0a0f1e 55%, #05070f 100%);
+  background-attachment: fixed;
+  color: var(--color-mist-50);
   min-height: 100svh;
 }
 

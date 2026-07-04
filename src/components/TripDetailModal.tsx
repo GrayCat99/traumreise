@@ -13,32 +13,42 @@ export function TripDetailModal({ ranked, rank, weights, onClose }: TripDetailMo
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-start sm:items-center justify-center bg-ink-900/50 backdrop-blur-sm p-4 overflow-y-auto animate-fade-in"
+      className="fixed inset-0 z-50 flex items-start sm:items-center justify-center bg-navy-950/70 backdrop-blur-sm p-4 overflow-y-auto animate-fade-in"
       onClick={onClose}
     >
       <div
-        className="bg-sand-50 rounded-2xl shadow-xl max-w-2xl w-full my-8 animate-fade-in-up"
+        className="bg-navy-800 border border-white/10 rounded-2xl shadow-xl max-w-2xl w-full my-8 animate-fade-in-up"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="p-6 sm:p-8">
-          <div className="flex items-start justify-between mb-4">
+          <div className="flex items-start justify-between mb-1">
             <div>
-              <span className="text-sm font-semibold text-terracotta-600">Platz {rank}</span>
-              <h2 className="text-2xl font-bold text-ink-900">{trip.name}</h2>
-              <p className="text-ink-700/70">{trip.route}</p>
+              <span className="text-sm font-semibold text-sky-400">Platz {rank}</span>
+              <h2 className="text-2xl font-bold text-mist-50">
+                <span className="mr-1.5" aria-hidden>
+                  {trip.icon}
+                </span>
+                {trip.name}
+              </h2>
+              <p className="text-mist-300">{trip.route}</p>
+              <p className="text-xs text-mist-400 mt-1">
+                {trip.duration} · {trip.estimatedCost}
+              </p>
             </div>
             <div className="text-right shrink-0">
-              <div className="text-3xl font-bold text-teal-600">{weightedScore.toFixed(1)}</div>
-              <div className="text-xs text-ink-700/60">von 10</div>
+              <div className="text-3xl font-bold text-sky-400">{weightedScore.toFixed(1)}</div>
+              <div className="text-xs text-mist-400">von 10</div>
             </div>
           </div>
+
+          <p className="text-sm text-mist-200 mt-3 mb-4">{trip.shortDescription}</p>
 
           {badges.length > 0 && (
             <div className="flex flex-wrap gap-2 mb-6">
               {badges.map((badge) => (
                 <span
                   key={badge}
-                  className="text-xs font-semibold px-2.5 py-1 rounded-full bg-terracotta-100 text-terracotta-700"
+                  className="text-xs font-semibold px-2.5 py-1 rounded-full bg-sky-400/15 text-sky-300 border border-sky-400/30"
                 >
                   {badge}
                 </span>
@@ -46,61 +56,103 @@ export function TripDetailModal({ ranked, rank, weights, onClose }: TripDetailMo
             </div>
           )}
 
-          <div className="grid sm:grid-cols-2 gap-6 mb-6">
-            <div>
-              <h3 className="font-semibold text-ink-900 mb-2">✅ Das ist großartig</h3>
-              <ul className="space-y-1.5 text-sm text-ink-700">
-                {trip.great.map((item) => (
-                  <li key={item} className="flex gap-2">
-                    <span aria-hidden>•</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold text-ink-900 mb-2">⚠️ Darauf solltet ihr achten</h3>
-              <ul className="space-y-1.5 text-sm text-ink-700">
-                {trip.awareOf.map((item) => (
-                  <li key={item} className="flex gap-2">
-                    <span aria-hidden>•</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className="mb-6">
+            <h3 className="font-semibold text-mist-50 mb-2">🗺️ Enthaltene Highlights</h3>
+            <ul className="space-y-1.5 text-sm text-mist-200">
+              {trip.includedHighlights.map((item) => (
+                <li key={item} className="flex gap-2">
+                  <span aria-hidden>•</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div className="mb-6">
-            <h3 className="font-semibold text-ink-900 mb-2">👥 Am besten geeignet für</h3>
-            <div className="flex flex-wrap gap-2">
-              {trip.bestFor.map((type) => (
-                <span key={type} className="text-xs font-medium px-2.5 py-1 rounded-full bg-teal-100 text-teal-700">
-                  {type}
-                </span>
-              ))}
+            <h3 className="font-semibold text-mist-50 mb-2">🌤️ Wetter im September</h3>
+            <p className="text-sm text-mist-200">{trip.weatherSummary}</p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-6 mb-6">
+            <div>
+              <h3 className="font-semibold text-mist-50 mb-2">✅ Das ist großartig</h3>
+              <ul className="space-y-1.5 text-sm text-mist-200">
+                {trip.whatIsGreat.map((item) => (
+                  <li key={item} className="flex gap-2">
+                    <span aria-hidden>•</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold text-mist-50 mb-2">⚠️ Darauf solltest du achten</h3>
+              <ul className="space-y-1.5 text-sm text-mist-200">
+                {trip.whatToBeAwareOf.map((item) => (
+                  <li key={item} className="flex gap-2">
+                    <span aria-hidden>•</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
 
+          <div className="grid sm:grid-cols-2 gap-6 mb-6">
+            <div>
+              <h3 className="font-semibold text-mist-50 mb-2">👥 Am besten geeignet für</h3>
+              <div className="flex flex-wrap gap-2">
+                {trip.bestFor.map((type) => (
+                  <span
+                    key={type}
+                    className="text-xs font-medium px-2.5 py-1 rounded-full bg-sky-400/15 text-sky-300 border border-sky-400/30"
+                  >
+                    {type}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h3 className="font-semibold text-mist-50 mb-2">🙅 Weniger geeignet für</h3>
+              <div className="flex flex-wrap gap-2">
+                {trip.notIdealFor.map((type) => (
+                  <span key={type} className="text-xs font-medium px-2.5 py-1 rounded-full bg-white/5 text-mist-300 border border-white/10">
+                    {type}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="mb-6 rounded-xl border border-white/10 bg-white/5 px-4 py-4">
+            <h3 className="font-semibold text-mist-50 mb-1">📝 Fazit</h3>
+            <p className="text-sm text-mist-200">{trip.verdict}</p>
+          </div>
+
           <div>
-            <h3 className="font-semibold text-ink-900 mb-3">📊 Punkte-Aufschlüsselung</h3>
-            <div className="overflow-x-auto rounded-xl border border-terracotta-100">
+            <h3 className="font-semibold text-mist-50 mb-3">📊 Punkte-Aufschlüsselung</h3>
+            <div className="overflow-x-auto rounded-xl border border-white/10">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="bg-terracotta-50 text-left">
-                    <th className="px-3 py-2 font-semibold text-ink-900">Kriterium</th>
-                    <th className="px-3 py-2 font-semibold text-ink-900 text-right">Score /10</th>
-                    <th className="px-3 py-2 font-semibold text-ink-900 text-right">Gewichtung</th>
-                    <th className="px-3 py-2 font-semibold text-ink-900 text-right">Beitrag</th>
+                  <tr className="bg-white/5 text-left">
+                    <th className="px-3 py-2 font-semibold text-mist-50">Kriterium</th>
+                    <th className="px-3 py-2 font-semibold text-mist-50 text-right">Score /10</th>
+                    <th className="px-3 py-2 font-semibold text-mist-50 text-right">Gewichtung</th>
+                    <th className="px-3 py-2 font-semibold text-mist-50 text-right">Beitrag</th>
                   </tr>
                 </thead>
                 <tbody>
                   {CRITERIA.map((c) => (
-                    <tr key={c.id} className="border-t border-terracotta-100">
-                      <td className="px-3 py-2 text-ink-700">{c.label}</td>
-                      <td className="px-3 py-2 text-right tabular-nums">{trip.scores[c.id].toFixed(1)}</td>
-                      <td className="px-3 py-2 text-right tabular-nums">{weights[c.id]}%</td>
-                      <td className="px-3 py-2 text-right tabular-nums font-medium">
+                    <tr key={c.id} className="border-t border-white/10">
+                      <td className="px-3 py-2 text-mist-200">
+                        <span className="mr-1" aria-hidden>
+                          {c.icon}
+                        </span>
+                        {c.label}
+                      </td>
+                      <td className="px-3 py-2 text-right tabular-nums text-mist-200">{trip.scores[c.id].toFixed(1)}</td>
+                      <td className="px-3 py-2 text-right tabular-nums text-mist-200">{weights[c.id]}%</td>
+                      <td className="px-3 py-2 text-right tabular-nums font-medium text-mist-50">
                         {contributions[c.id].toFixed(2)}
                       </td>
                     </tr>
@@ -112,7 +164,7 @@ export function TripDetailModal({ ranked, rank, weights, onClose }: TripDetailMo
 
           <button
             onClick={onClose}
-            className="mt-6 w-full rounded-xl px-6 py-3 font-semibold text-white bg-terracotta-500 hover:bg-terracotta-600 transition"
+            className="mt-6 w-full rounded-xl px-6 py-3 font-semibold text-navy-950 bg-sky-400 hover:bg-sky-300 transition"
           >
             Zurück
           </button>

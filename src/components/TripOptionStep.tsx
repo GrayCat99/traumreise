@@ -28,21 +28,26 @@ export function TripOptionStep({ selected, onToggle, onBack, onNext }: TripOptio
               aria-pressed={isSelected}
               className={`text-left rounded-2xl border-2 p-5 transition-all shadow-sm hover:shadow-md ${
                 isSelected
-                  ? 'border-teal-500 bg-teal-50/60'
-                  : 'border-transparent bg-white/70 hover:border-teal-200'
+                  ? 'border-sky-400 bg-sky-400/10'
+                  : 'border-transparent bg-white/5 hover:border-sky-400/30'
               }`}
             >
               <div className="flex items-start gap-3">
                 <span
-                  className={`flex items-center justify-center w-8 h-8 rounded-full font-bold text-sm shrink-0 ${
-                    isSelected ? 'bg-teal-500 text-white' : 'bg-terracotta-100 text-terracotta-600'
+                  className={`flex items-center justify-center w-9 h-9 rounded-full font-bold text-sm shrink-0 ${
+                    isSelected ? 'bg-sky-400 text-navy-950' : 'bg-white/10 text-mist-200'
                   }`}
                 >
                   {trip.letter}
                 </span>
                 <div>
-                  <h3 className="font-semibold text-ink-900 mb-1">{trip.name}</h3>
-                  <p className="text-sm text-ink-700/70">{trip.route}</p>
+                  <h3 className="font-semibold text-mist-50 mb-1">
+                    <span className="mr-1.5" aria-hidden>
+                      {trip.icon}
+                    </span>
+                    {trip.name}
+                  </h3>
+                  <p className="text-sm text-mist-300">{trip.route}</p>
                 </div>
               </div>
             </button>

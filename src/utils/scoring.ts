@@ -48,7 +48,7 @@ export function rankTrips(trips: Trip[], weights: Weights): RankedTrip[] {
     const bestCulture = [...ranked].sort((a, b) => b.trip.scores.culture - a.trip.scores.culture)[0]
     const bestFood = [...ranked].sort((a, b) => b.trip.scores.food - a.trip.scores.food)[0]
     const lowestStress = [...ranked].sort((a, b) => b.trip.scores.stress - a.trip.scores.stress)[0]
-    const bestScenery = [...ranked].sort((a, b) => b.trip.scores.scenery - a.trip.scores.scenery)[0]
+    const bestScenery = [...ranked].sort((a, b) => b.trip.scores.scenicBeauty - a.trip.scores.scenicBeauty)[0]
     const bestCost = [...ranked].sort((a, b) => b.trip.scores.cost - a.trip.scores.cost)[0]
     const bestCoolness = [...ranked].sort((a, b) => b.trip.scores.coolness - a.trip.scores.coolness)[0]
 

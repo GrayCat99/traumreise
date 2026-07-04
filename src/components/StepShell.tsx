@@ -23,12 +23,12 @@ export function StepShell({
 }: StepShellProps) {
   return (
     <div className="max-w-3xl mx-auto px-4 py-6 animate-fade-in-up">
-      <h2 className="text-2xl sm:text-3xl font-bold text-ink-900 text-center mb-2">{headline}</h2>
-      {subheadline && <p className="text-center text-ink-700/70 mb-6">{subheadline}</p>}
+      <h2 className="text-2xl sm:text-3xl font-bold text-mist-50 text-center mb-2">{headline}</h2>
+      {subheadline && <p className="text-center text-mist-300 mb-6">{subheadline}</p>}
       <div className="mb-8">{children}</div>
 
       {warning && (
-        <p className="text-center text-sm font-medium text-terracotta-600 mb-4" role="alert">
+        <p className="text-center text-sm font-medium text-amber-300 mb-4" role="alert">
           {warning}
         </p>
       )}
@@ -37,7 +37,7 @@ export function StepShell({
         {onBack ? (
           <button
             onClick={onBack}
-            className="rounded-xl px-5 py-3 font-semibold text-ink-700 border border-terracotta-200 bg-white/70 hover:bg-white transition"
+            className="rounded-xl px-5 py-3 font-semibold text-mist-100 border border-white/15 bg-white/5 hover:bg-white/10 transition"
           >
             Zurück
           </button>
@@ -47,7 +47,7 @@ export function StepShell({
         <button
           onClick={onNext}
           disabled={nextDisabled}
-          className="rounded-xl px-6 py-3 font-semibold text-white bg-terracotta-500 shadow-sm hover:bg-terracotta-600 transition disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-terracotta-500"
+          className="rounded-xl px-6 py-3 font-semibold text-navy-950 bg-sky-400 shadow-[0_0_20px_rgba(56,189,248,0.35)] hover:bg-sky-300 transition disabled:opacity-30 disabled:cursor-not-allowed disabled:shadow-none disabled:hover:bg-sky-400"
         >
           {nextLabel}
         </button>

@@ -28,8 +28,8 @@ export function ArchetypeStep({ selected, onToggle, onBack, onNext }: ArchetypeS
               aria-pressed={isSelected}
               className={`text-left rounded-2xl border-2 p-5 transition-all shadow-sm hover:shadow-md ${
                 isSelected
-                  ? 'border-terracotta-500 bg-terracotta-50'
-                  : 'border-transparent bg-white/70 hover:border-terracotta-200'
+                  ? 'border-sky-400 bg-sky-400/10'
+                  : 'border-transparent bg-white/5 hover:border-sky-400/30'
               }`}
             >
               <div className="flex items-start gap-3">
@@ -37,8 +37,8 @@ export function ArchetypeStep({ selected, onToggle, onBack, onNext }: ArchetypeS
                   {archetype.icon}
                 </span>
                 <div>
-                  <h3 className="font-semibold text-ink-900 mb-1">{archetype.title}</h3>
-                  <p className="text-sm text-ink-700/70">{archetype.description}</p>
+                  <h3 className="font-semibold text-mist-50 mb-1">{archetype.label}</h3>
+                  <p className="text-sm text-mist-300">{archetype.prompt}</p>
                 </div>
               </div>
             </button>

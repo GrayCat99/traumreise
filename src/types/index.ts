@@ -1,23 +1,31 @@
 export type ArchetypeId =
-  | 'kulturjaeger'
-  | 'genussreisender'
-  | 'erlebnisreisender'
-  | 'abenteuer'
-  | 'preisleistung'
+  | 'bucket-list-culture'
+  | 'stylish-foodie'
+  | 'relaxed-explorer'
+  | 'adventure-coolness'
+  | 'value-seeker'
 
 export interface Archetype {
   id: ArchetypeId
-  title: string
-  description: string
+  label: string
+  prompt: string
   icon: string
+  suggestedWeights: Weights
 }
 
-export type TripId = 'egypt' | 'india' | 'indiaHyderabad' | 'vietnam' | 'vietnamTaipei' | 'usaSouth'
+export type TripId =
+  | 'egypt'
+  | 'india'
+  | 'indiaHyderabad'
+  | 'vietnam'
+  | 'vietnamTaipei'
+  | 'usaSouth'
+  | 'japanOkinawa'
 
 export type CriterionId =
   | 'weather'
   | 'stress'
-  | 'scenery'
+  | 'scenicBeauty'
   | 'culture'
   | 'coolness'
   | 'food'
@@ -28,6 +36,7 @@ export interface Criterion {
   label: string
   defaultWeight: number
   description: string
+  icon: string
 }
 
 export type Scores = Record<CriterionId, number>
@@ -35,12 +44,22 @@ export type Scores = Record<CriterionId, number>
 export interface Trip {
   id: TripId
   letter: string
+  icon: string
   name: string
+  shortName: string
   route: string
+  duration: string
+  shortDescription: string
   scores: Scores
-  great: string[]
-  awareOf: string[]
+  includedHighlights: string[]
+  weatherSummary: string
+  whatIsGreat: string[]
+  whatToBeAwareOf: string[]
   bestFor: string[]
+  notIdealFor: string[]
+  verdict: string
+  tags: string[]
+  estimatedCost: string
 }
 
 export type Weights = Record<CriterionId, number>

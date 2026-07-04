@@ -81,6 +81,7 @@ function App() {
           <WeightStep
             weights={decision.weights}
             onWeightsChange={decision.setWeights}
+            selectedArchetypes={decision.archetypes}
             onBack={() => decision.goTo('trips')}
             onNext={() => decision.goTo('results')}
           />
