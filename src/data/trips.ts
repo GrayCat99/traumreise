@@ -189,6 +189,13 @@ export const TRIPS: Trip[] = [
     icon: '🐫',
     scores: { weather: 4.5, stress: 6.0, scenicBeauty: 7.0, culture: 10.0, coolness: 8.5, food: 6.5, cost: 8.0 },
     bestFor: ['bucket-list-culture', 'value-seeker'],
+    videos: [
+      { title: "What I Wish I'd Known BEFORE Doing My Nile River Cruise!", url: 'https://www.youtube.com/watch?v=zaqbCTGWujs' },
+      { title: 'Egypt Tour Was NOT What We Expected (I wish they told us...)', url: 'https://www.youtube.com/watch?v=i-euJjNYDQI' },
+      { title: 'One Week in Egypt: The Ultimate 7-Day Itinerary & Travel Guide 2026', url: 'https://www.youtube.com/watch?v=maHCa5o8ZYU' },
+      { title: 'Egypt Travel Guide 2026 – Pyramids, Nile Cruise, Red Sea & Real Costs (New Digital Visa)', url: 'https://www.youtube.com/watch?v=YI22skjqT4o' },
+      { title: 'Classic Egypt 10 Day Itinerary | From Cairo, Luxor, Dahabiya Nile Cruise, and Aswan', url: 'https://www.youtube.com/watch?v=bUEZzGWAs4w' },
+    ],
     i18n: {
       de: {
         name: 'Ägypten',
@@ -289,6 +296,11 @@ export const TRIPS: Trip[] = [
     icon: '🕌',
     scores: { weather: 6.5, stress: 6.0, scenicBeauty: 8.0, culture: 9.5, coolness: 8.5, food: 9.5, cost: 7.0 },
     bestFor: ['bucket-list-culture', 'stylish-foodie'],
+    videos: [
+      { title: 'DELHI AGRA JAIPUR Tour – Complete Guide', url: 'https://www.youtube.com/watch?v=XrGMzbXFYNo' },
+      { title: 'The ULTIMATE Golden Triangle India Travel Guide', url: 'https://www.youtube.com/watch?v=sK2fWVb2bVk' },
+      { title: 'I Spent 3 Days in Delhi, Agra & Jaipur – Discovered the REAL India', url: 'https://www.youtube.com/watch?v=assNvQDKcZo' },
+    ],
     i18n: {
       de: {
         name: 'Indien (ohne Hyderabad)',
@@ -394,6 +406,12 @@ export const TRIPS: Trip[] = [
     icon: '🕌',
     scores: { weather: 6.5, stress: 5.5, scenicBeauty: 8.0, culture: 9.5, coolness: 8.5, food: 9.5, cost: 6.5 },
     bestFor: ['bucket-list-culture', 'adventure-coolness'],
+    videos: [
+      { title: 'DELHI AGRA JAIPUR Tour – Complete Guide', url: 'https://www.youtube.com/watch?v=XrGMzbXFYNo' },
+      { title: 'The ULTIMATE Golden Triangle India Travel Guide', url: 'https://www.youtube.com/watch?v=sK2fWVb2bVk' },
+      { title: 'I Spent 3 Days in Delhi, Agra & Jaipur – Discovered the REAL India', url: 'https://www.youtube.com/watch?v=assNvQDKcZo' },
+      { title: 'Hyderabad Travel Guide – Top 12 Attractions, Itinerary, Tickets', url: 'https://www.youtube.com/watch?v=upwzKglxvGk' },
+    ],
     i18n: {
       de: {
         name: 'Indien (mit Hyderabad)',
@@ -493,6 +511,11 @@ export const TRIPS: Trip[] = [
     icon: '🛕',
     scores: { weather: 7.5, stress: 7.5, scenicBeauty: 8.5, culture: 8.5, coolness: 9.0, food: 9.5, cost: 7.0 },
     bestFor: ['relaxed-explorer', 'adventure-coolness'],
+    videos: [
+      { title: 'Top 10 Things to do in Halong Bay 2026 – Vietnam Travel Guide', url: 'https://www.youtube.com/watch?v=jm8d8g9JMg8' },
+      { title: 'HA LONG BAY, VIETNAM – 2-Day Ha Long Bay Cruise (Full Guide)', url: 'https://www.youtube.com/watch?v=XRUw6-GoS24' },
+      { title: 'HOW TO SEE HA LONG BAY FOR $35 – Trip to Lan Ha Bay and Cat Ba', url: 'https://www.youtube.com/watch?v=-MrkVMQqetA' },
+    ],
     i18n: {
       de: {
         name: 'Vietnam/Kambodscha (ohne Taipeh)',
@@ -584,6 +607,12 @@ export const TRIPS: Trip[] = [
     icon: '🛕',
     scores: { weather: 7.5, stress: 6.8, scenicBeauty: 8.5, culture: 8.5, coolness: 9.5, food: 9.8, cost: 6.5 },
     bestFor: ['adventure-coolness', 'stylish-foodie'],
+    videos: [
+      { title: 'Which Ha Long Bay cruise should you book? – Vietnam Travel Guide', url: 'https://www.youtube.com/watch?v=ReMD5B8sDgU' },
+      { title: 'HOW TO SEE HA LONG BAY FOR $35 – Trip to Lan Ha Bay and Cat Ba', url: 'https://www.youtube.com/watch?v=-MrkVMQqetA' },
+      { title: 'HA LONG BAY, VIETNAM – 2-Day Ha Long Bay Cruise (Full Guide)', url: 'https://www.youtube.com/watch?v=XRUw6-GoS24' },
+      { title: '2026 Taiwan Food Guide: 30 Budget Eats – Street Food', url: 'https://www.youtube.com/watch?v=ddWFEuAMn9s' },
+    ],
     i18n: {
       de: {
         name: 'Vietnam/Kambodscha (mit Taipeh)',
@@ -680,6 +709,12 @@ export const TRIPS: Trip[] = [
     icon: '🎷',
     scores: { weather: 5.0, stress: 7.5, scenicBeauty: 6.0, culture: 6.5, coolness: 8.5, food: 8.5, cost: 6.0 },
     bestFor: ['adventure-coolness', 'stylish-foodie'],
+    videos: [
+      { title: '3 Days in New Orleans – Best Things To Do, Eat, + See', url: 'https://www.youtube.com/watch?v=TgGfohYFW9k' },
+      { title: '20 Things to do in New Orleans, Louisiana', url: 'https://www.youtube.com/watch?v=3GmGYCqEmZg' },
+      { title: 'How to Spend 3 Days in MIAMI Florida – Travel Itinerary', url: 'https://www.youtube.com/watch?v=NsQC5P2BZvE' },
+      { title: 'MIAMI, FLORIDA Travel Guide – 10 Things To Do', url: 'https://www.youtube.com/watch?v=FmtjJjUWnEA' },
+    ],
     i18n: {
       de: {
         name: 'USA Süden',
@@ -782,6 +817,14 @@ export const TRIPS: Trip[] = [
     icon: '🗻',
     scores: { weather: 6.0, stress: 8.0, scenicBeauty: 8.0, culture: 8.5, coolness: 9.5, food: 9.5, cost: 6.5 },
     bestFor: ['stylish-foodie', 'relaxed-explorer', 'adventure-coolness'],
+    videos: [
+      { title: 'ULTIMATE 10 DAY JAPAN Travel Guide – Tokyo, Nagano, Kyoto, Osaka', url: 'https://www.youtube.com/watch?v=yIp7em7jDfs' },
+      { title: 'Japan Travel Planning Made Easy: 10-Day Itinerary for First-Timers', url: 'https://www.youtube.com/watch?v=4Mtc2E7fkZ4' },
+      { title: 'Japan Travel Guide: Best Things To Do in Japan 2026 4K', url: 'https://www.youtube.com/watch?v=jTOfOew316s' },
+      { title: 'Why You NEED to Visit OKINAWA (9 Day Island Hopping Itinerary)', url: 'https://www.youtube.com/watch?v=wLFStLq8Cmw' },
+      { title: 'OKINAWA, JAPAN (2026) – How To Visit The BEST ISLANDS', url: 'https://www.youtube.com/watch?v=ptmKQhvQLxQ' },
+      { title: 'OKINAWA TRAVEL GUIDE 2026 – What You NEED to Know Before You Go', url: 'https://www.youtube.com/watch?v=8-ykNd3p23w' },
+    ],
     i18n: {
       de: {
         name: 'Japan inkl. Okinawa',

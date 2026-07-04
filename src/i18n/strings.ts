@@ -69,6 +69,7 @@ export interface Strings {
     tableScore: string
     tableWeight: string
     tableContribution: string
+    videosHeading: string
   }
   savedVotes: {
     heading: string
@@ -171,6 +172,7 @@ export const STRINGS: Record<Lang, Strings> = {
       tableScore: 'Score /10',
       tableWeight: 'Gewichtung',
       tableContribution: 'Beitrag',
+      videosHeading: 'Video-Empfehlungen',
     },
     savedVotes: {
       heading: 'Gespeicherte Stimmen',
@@ -271,6 +273,7 @@ export const STRINGS: Record<Lang, Strings> = {
       tableScore: 'Score /10',
       tableWeight: 'Weight',
       tableContribution: 'Contribution',
+      videosHeading: 'Recommended videos',
     },
     savedVotes: {
       heading: 'Saved votes',
@@ -371,6 +374,7 @@ export const STRINGS: Record<Lang, Strings> = {
       tableScore: 'Puntuación /10',
       tableWeight: 'Ponderación',
       tableContribution: 'Contribución',
+      videosHeading: 'Vídeos recomendados',
     },
     savedVotes: {
       heading: 'Votos guardados',

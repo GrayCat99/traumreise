@@ -71,12 +71,18 @@ export interface TripText {
 
 export type BadgeKey = 'bestCulture' | 'bestFood' | 'lowestStress' | 'bestScenery' | 'bestValue' | 'mostCool'
 
+export interface TripVideo {
+  title: string
+  url: string
+}
+
 export interface Trip {
   id: TripId
   letter: string
   icon: string
   scores: Scores
   bestFor: ArchetypeId[]
+  videos: TripVideo[]
   i18n: Translatable<TripText>
 }
 

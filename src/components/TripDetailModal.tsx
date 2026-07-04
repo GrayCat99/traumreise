@@ -74,6 +74,27 @@ export function TripDetailModal({ ranked, rank, weights, onClose }: TripDetailMo
             </ul>
           </div>
 
+          {trip.videos.length > 0 && (
+            <div className="mb-6">
+              <h3 className="font-semibold text-mist-50 mb-2">📺 {s.tripDetail.videosHeading}</h3>
+              <ul className="space-y-1.5 text-sm">
+                {trip.videos.map((video) => (
+                  <li key={video.url}>
+                    <a
+                      href={video.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-start gap-2 text-sky-300 hover:text-sky-200 hover:underline transition"
+                    >
+                      <span aria-hidden>▶️</span>
+                      <span>{video.title}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
           <div className="mb-6">
             <h3 className="font-semibold text-mist-50 mb-2">🌤️ {s.tripDetail.weatherHeading}</h3>
             <p className="text-sm text-mist-200">{text.weatherSummary}</p>
