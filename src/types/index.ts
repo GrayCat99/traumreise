@@ -1,3 +1,7 @@
+export type Lang = 'de' | 'en' | 'es'
+
+export type Translatable<T> = Record<Lang, T>
+
 export type ArchetypeId =
   | 'bucket-list-culture'
   | 'stylish-foodie'
@@ -5,12 +9,16 @@ export type ArchetypeId =
   | 'adventure-coolness'
   | 'value-seeker'
 
-export interface Archetype {
-  id: ArchetypeId
+export interface ArchetypeText {
   label: string
   prompt: string
+}
+
+export interface Archetype {
+  id: ArchetypeId
   icon: string
   suggestedWeights: Weights
+  i18n: Translatable<ArchetypeText>
 }
 
 export type TripId =
@@ -31,35 +39,45 @@ export type CriterionId =
   | 'food'
   | 'cost'
 
+export interface CriterionText {
+  label: string
+  description: string
+}
+
 export interface Criterion {
   id: CriterionId
-  label: string
   defaultWeight: number
-  description: string
   icon: string
+  i18n: Translatable<CriterionText>
 }
 
 export type Scores = Record<CriterionId, number>
 
-export interface Trip {
-  id: TripId
-  letter: string
-  icon: string
+export interface TripText {
   name: string
   shortName: string
   route: string
   duration: string
   shortDescription: string
-  scores: Scores
   includedHighlights: string[]
   weatherSummary: string
   whatIsGreat: string[]
   whatToBeAwareOf: string[]
-  bestFor: string[]
   notIdealFor: string[]
   verdict: string
   tags: string[]
   estimatedCost: string
+}
+
+export type BadgeKey = 'bestCulture' | 'bestFood' | 'lowestStress' | 'bestScenery' | 'bestValue' | 'mostCool'
+
+export interface Trip {
+  id: TripId
+  letter: string
+  icon: string
+  scores: Scores
+  bestFor: ArchetypeId[]
+  i18n: Translatable<TripText>
 }
 
 export type Weights = Record<CriterionId, number>
@@ -68,7 +86,7 @@ export interface RankedTrip {
   trip: Trip
   weightedScore: number
   contributions: Record<CriterionId, number>
-  badges: string[]
+  badges: BadgeKey[]
 }
 
 export interface SavedVote {

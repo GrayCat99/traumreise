@@ -1,5 +1,6 @@
 import { ARCHETYPES } from '../data/trips'
-import type { SavedVote } from '../types'
+import { useI18n } from '../i18n/I18nContext'
+import type { ArchetypeId, Lang, SavedVote } from '../types'
 import { exportVotesAsCSV, exportVotesAsJSON } from '../utils/export'
 
 interface SavedVotesDrawerProps {
@@ -9,11 +10,13 @@ interface SavedVotesDrawerProps {
   onClearAll: () => void
 }
 
-function archetypeLabel(id: string): string {
-  return ARCHETYPES.find((a) => a.id === id)?.label ?? id
+function archetypeLabel(id: ArchetypeId, lang: Lang): string {
+  return ARCHETYPES.find((a) => a.id === id)?.i18n[lang].label ?? id
 }
 
 export function SavedVotesDrawer({ votes, onClose, onDelete, onClearAll }: SavedVotesDrawerProps) {
+  const { s, lang } = useI18n()
+
   return (
     <div className="fixed inset-0 z-50 flex justify-end bg-navy-950/70 backdrop-blur-sm animate-fade-in" onClick={onClose}>
       <div
@@ -22,10 +25,10 @@ export function SavedVotesDrawer({ votes, onClose, onDelete, onClearAll }: Saved
       >
         <div className="p-6 sm:p-8">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-mist-50">Gespeicherte Stimmen</h2>
+            <h2 className="text-2xl font-bold text-mist-50">{s.savedVotes.heading}</h2>
             <button
               onClick={onClose}
-              aria-label="Schließen"
+              aria-label={s.savedVotes.closeAria}
               className="w-9 h-9 rounded-full bg-white/10 text-mist-100 font-bold hover:bg-white/20 transition"
             >
               ✕
@@ -38,35 +41,35 @@ export function SavedVotesDrawer({ votes, onClose, onDelete, onClearAll }: Saved
               disabled={votes.length === 0}
               className="rounded-xl px-4 py-2 text-sm font-medium border border-sky-400/40 text-sky-300 bg-white/5 hover:bg-sky-400/10 transition disabled:opacity-40"
             >
-              Als JSON exportieren
+              {s.savedVotes.exportJson}
             </button>
             <button
               onClick={() => exportVotesAsCSV(votes)}
               disabled={votes.length === 0}
               className="rounded-xl px-4 py-2 text-sm font-medium border border-sky-400/40 text-sky-300 bg-white/5 hover:bg-sky-400/10 transition disabled:opacity-40"
             >
-              Als CSV exportieren
+              {s.savedVotes.exportCsv}
             </button>
             <button
               onClick={onClearAll}
               disabled={votes.length === 0}
               className="rounded-xl px-4 py-2 text-sm font-medium border border-amber-400/40 text-amber-300 bg-white/5 hover:bg-amber-400/10 transition disabled:opacity-40 ml-auto"
             >
-              Alle löschen
+              {s.savedVotes.clearAll}
             </button>
           </div>
 
           {votes.length === 0 ? (
-            <p className="text-mist-300 text-center py-12">Noch keine gespeicherten Stimmen.</p>
+            <p className="text-mist-300 text-center py-12">{s.savedVotes.emptyState}</p>
           ) : (
             <div className="overflow-x-auto rounded-xl border border-white/10">
               <table className="w-full text-sm">
                 <thead>
                   <tr className="bg-white/5 text-left">
-                    <th className="px-3 py-2 font-semibold text-mist-50">Name</th>
-                    <th className="px-3 py-2 font-semibold text-mist-50">Zeitpunkt</th>
-                    <th className="px-3 py-2 font-semibold text-mist-50">Reisetypen</th>
-                    <th className="px-3 py-2 font-semibold text-mist-50">Top-Ergebnis</th>
+                    <th className="px-3 py-2 font-semibold text-mist-50">{s.savedVotes.colName}</th>
+                    <th className="px-3 py-2 font-semibold text-mist-50">{s.savedVotes.colTimestamp}</th>
+                    <th className="px-3 py-2 font-semibold text-mist-50">{s.savedVotes.colArchetypes}</th>
+                    <th className="px-3 py-2 font-semibold text-mist-50">{s.savedVotes.colTopResult}</th>
                     <th className="px-3 py-2 font-semibold text-mist-50"></th>
                   </tr>
                 </thead>
@@ -75,10 +78,10 @@ export function SavedVotesDrawer({ votes, onClose, onDelete, onClearAll }: Saved
                     <tr key={vote.id} className="border-t border-white/10 align-top">
                       <td className="px-3 py-2 text-mist-50 font-medium">{vote.participantName}</td>
                       <td className="px-3 py-2 text-mist-300 whitespace-nowrap">
-                        {new Date(vote.timestamp).toLocaleString('de-DE')}
+                        {new Date(vote.timestamp).toLocaleString(lang)}
                       </td>
                       <td className="px-3 py-2 text-mist-200">
-                        {vote.archetypes.map(archetypeLabel).join(', ') || '—'}
+                        {vote.archetypes.map((id) => archetypeLabel(id, lang)).join(', ') || '—'}
                       </td>
                       <td className="px-3 py-2 text-mist-200">
                         {vote.ranking[0] ? `${vote.ranking[0].tripName} (${vote.ranking[0].score.toFixed(1)})` : '—'}
@@ -86,10 +89,10 @@ export function SavedVotesDrawer({ votes, onClose, onDelete, onClearAll }: Saved
                       <td className="px-3 py-2">
                         <button
                           onClick={() => onDelete(vote.id)}
-                          aria-label={`Stimme von ${vote.participantName} löschen`}
+                          aria-label={s.savedVotes.deleteAria(vote.participantName)}
                           className="text-amber-300 hover:text-amber-200 font-medium"
                         >
-                          Löschen
+                          {s.savedVotes.deleteAction}
                         </button>
                       </td>
                     </tr>

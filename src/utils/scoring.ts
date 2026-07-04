@@ -1,5 +1,5 @@
 import { CRITERIA } from '../data/trips'
-import type { CriterionId, RankedTrip, Trip, Weights } from '../types'
+import type { BadgeKey, CriterionId, RankedTrip, Trip, Weights } from '../types'
 
 export function defaultWeights(): Weights {
   return CRITERIA.reduce((acc, c) => {
@@ -39,7 +39,7 @@ export function rankTrips(trips: Trip[], weights: Weights): RankedTrip[] {
       contributions[c.id] = contribution
       weightedScore += contribution
     })
-    return { trip, weightedScore, contributions, badges: [] as string[] }
+    return { trip, weightedScore, contributions, badges: [] as BadgeKey[] }
   })
 
   ranked.sort((a, b) => b.weightedScore - a.weightedScore)
@@ -52,12 +52,12 @@ export function rankTrips(trips: Trip[], weights: Weights): RankedTrip[] {
     const bestCost = [...ranked].sort((a, b) => b.trip.scores.cost - a.trip.scores.cost)[0]
     const bestCoolness = [...ranked].sort((a, b) => b.trip.scores.coolness - a.trip.scores.coolness)[0]
 
-    bestCulture.badges.push('Beste Kultur')
-    bestFood.badges.push('Bestes Essen')
-    lowestStress.badges.push('Wenigster Stress')
-    bestScenery.badges.push('Schönste Landschaft')
-    bestCost.badges.push('Bestes Preis-Leistungs-Verhältnis')
-    bestCoolness.badges.push('Am coolsten')
+    bestCulture.badges.push('bestCulture')
+    bestFood.badges.push('bestFood')
+    lowestStress.badges.push('lowestStress')
+    bestScenery.badges.push('bestScenery')
+    bestCost.badges.push('bestValue')
+    bestCoolness.badges.push('mostCool')
   }
 
   return ranked

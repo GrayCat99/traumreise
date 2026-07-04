@@ -1,10 +1,12 @@
 import { useMemo, useState } from 'react'
 import { TRIPS } from '../data/trips'
+import { useI18n } from '../i18n/I18nContext'
 import { defaultWeights, rankTrips } from '../utils/scoring'
 import { saveVote } from '../utils/storage'
 import type { ArchetypeId, RankedTrip, Step, TripId, Weights } from '../types'
 
 export function useTravelDecision() {
+  const { lang } = useI18n()
   const [step, setStep] = useState<Step>('landing')
   const [participantName, setParticipantName] = useState('')
   const [archetypes, setArchetypes] = useState<ArchetypeId[]>([])
@@ -38,7 +40,7 @@ export function useTravelDecision() {
       archetypes,
       travelOptions,
       weights,
-      ranking: ranking.map((r) => ({ tripId: r.trip.id, tripName: r.trip.name, score: r.weightedScore })),
+      ranking: ranking.map((r) => ({ tripId: r.trip.id, tripName: r.trip.i18n[lang].name, score: r.weightedScore })),
     })
     setSavedConfirmation(true)
   }

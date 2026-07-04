@@ -6,21 +6,16 @@ import { ResultsStep } from './components/ResultsStep'
 import { SavedVotesDrawer } from './components/SavedVotesDrawer'
 import { TripOptionStep } from './components/TripOptionStep'
 import { WeightStep } from './components/WeightStep'
+import { useI18n } from './i18n/I18nContext'
 import { useTravelDecision } from './state/useTravelDecision'
 import { clearVotes, deleteVote, loadVotes } from './utils/storage'
 import type { SavedVote } from './types'
 
 const STEP_ORDER = ['landing', 'archetypes', 'trips', 'weights', 'results'] as const
-const STEP_LABELS: Record<(typeof STEP_ORDER)[number], string> = {
-  landing: 'Start',
-  archetypes: 'Reisetypen',
-  trips: 'Reiseoptionen',
-  weights: 'Gewichtung',
-  results: 'Ergebnis',
-}
 
 function App() {
   const decision = useTravelDecision()
+  const { s } = useI18n()
   const [showSavedVotes, setShowSavedVotes] = useState(false)
   const [savedVotes, setSavedVotes] = useState<SavedVote[]>(() => loadVotes())
 
@@ -48,7 +43,7 @@ function App() {
     <div className="min-h-screen">
       <main className="pt-8 pb-16">
         {decision.step !== 'landing' && (
-          <ProgressBar currentStep={stepIndex} totalSteps={STEP_ORDER.length - 1} label={STEP_LABELS[decision.step]} />
+          <ProgressBar currentStep={stepIndex} totalSteps={STEP_ORDER.length - 1} label={s.stepLabels[decision.step]} />
         )}
 
         {decision.step === 'landing' && (

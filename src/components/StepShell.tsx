@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { useI18n } from '../i18n/I18nContext'
 
 interface StepShellProps {
   headline: string
@@ -18,9 +19,10 @@ export function StepShell({
   onBack,
   onNext,
   nextDisabled,
-  nextLabel = 'Weiter',
+  nextLabel,
   warning,
 }: StepShellProps) {
+  const { s } = useI18n()
   return (
     <div className="max-w-3xl mx-auto px-4 py-6 animate-fade-in-up">
       <h2 className="text-2xl sm:text-3xl font-bold text-mist-50 text-center mb-2">{headline}</h2>
@@ -39,7 +41,7 @@ export function StepShell({
             onClick={onBack}
             className="rounded-xl px-5 py-3 font-semibold text-mist-100 border border-white/15 bg-white/5 hover:bg-white/10 transition"
           >
-            Zurück
+            {s.stepShell.back}
           </button>
         ) : (
           <span />
@@ -49,7 +51,7 @@ export function StepShell({
           disabled={nextDisabled}
           className="rounded-xl px-6 py-3 font-semibold text-navy-950 bg-sky-400 shadow-[0_0_20px_rgba(56,189,248,0.35)] hover:bg-sky-300 transition disabled:opacity-30 disabled:cursor-not-allowed disabled:shadow-none disabled:hover:bg-sky-400"
         >
-          {nextLabel}
+          {nextLabel ?? s.stepShell.next}
         </button>
       </div>
     </div>

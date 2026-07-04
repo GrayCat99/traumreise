@@ -1,4 +1,5 @@
 import { TRIPS } from '../data/trips'
+import { useI18n } from '../i18n/I18nContext'
 import type { TripId } from '../types'
 import { StepShell } from './StepShell'
 
@@ -10,10 +11,12 @@ interface TripOptionStepProps {
 }
 
 export function TripOptionStep({ selected, onToggle, onBack, onNext }: TripOptionStepProps) {
+  const { s, lang } = useI18n()
+
   return (
     <StepShell
-      headline="Welche Reisen kommen für dich überhaupt in Frage?"
-      subheadline="Wähle alle Optionen aus, die du dir grundsätzlich vorstellen kannst."
+      headline={s.tripOptionStep.headline}
+      subheadline={s.tripOptionStep.subheadline}
       onBack={onBack}
       onNext={onNext}
       nextDisabled={selected.length === 0}
@@ -21,6 +24,7 @@ export function TripOptionStep({ selected, onToggle, onBack, onNext }: TripOptio
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {TRIPS.map((trip) => {
           const isSelected = selected.includes(trip.id)
+          const text = trip.i18n[lang]
           return (
             <button
               key={trip.id}
@@ -45,9 +49,9 @@ export function TripOptionStep({ selected, onToggle, onBack, onNext }: TripOptio
                     <span className="mr-1.5" aria-hidden>
                       {trip.icon}
                     </span>
-                    {trip.name}
+                    {text.name}
                   </h3>
-                  <p className="text-sm text-mist-300">{trip.route}</p>
+                  <p className="text-sm text-mist-300">{text.route}</p>
                 </div>
               </div>
             </button>

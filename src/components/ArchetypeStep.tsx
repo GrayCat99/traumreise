@@ -1,4 +1,5 @@
 import { ARCHETYPES } from '../data/trips'
+import { useI18n } from '../i18n/I18nContext'
 import type { ArchetypeId } from '../types'
 import { StepShell } from './StepShell'
 
@@ -10,10 +11,12 @@ interface ArchetypeStepProps {
 }
 
 export function ArchetypeStep({ selected, onToggle, onBack, onNext }: ArchetypeStepProps) {
+  const { s, lang } = useI18n()
+
   return (
     <StepShell
-      headline="Mich interessiert besonders …"
-      subheadline="Wähle einen oder mehrere Reisetypen aus, die zu dir passen."
+      headline={s.archetypeStep.headline}
+      subheadline={s.archetypeStep.subheadline}
       onBack={onBack}
       onNext={onNext}
       nextDisabled={selected.length === 0}
@@ -21,6 +24,7 @@ export function ArchetypeStep({ selected, onToggle, onBack, onNext }: ArchetypeS
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {ARCHETYPES.map((archetype) => {
           const isSelected = selected.includes(archetype.id)
+          const text = archetype.i18n[lang]
           return (
             <button
               key={archetype.id}
@@ -37,8 +41,8 @@ export function ArchetypeStep({ selected, onToggle, onBack, onNext }: ArchetypeS
                   {archetype.icon}
                 </span>
                 <div>
-                  <h3 className="font-semibold text-mist-50 mb-1">{archetype.label}</h3>
-                  <p className="text-sm text-mist-300">{archetype.prompt}</p>
+                  <h3 className="font-semibold text-mist-50 mb-1">{text.label}</h3>
+                  <p className="text-sm text-mist-300">{text.prompt}</p>
                 </div>
               </div>
             </button>
