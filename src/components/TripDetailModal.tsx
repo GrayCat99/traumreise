@@ -17,7 +17,7 @@ export function TripDetailModal({ ranked, rank, weights, onClose }: TripDetailMo
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-start sm:items-center justify-center bg-navy-950/70 backdrop-blur-sm p-4 overflow-y-auto animate-fade-in"
+      className="fixed inset-0 z-50 flex items-start justify-center bg-navy-950/70 backdrop-blur-sm p-4 overflow-y-auto animate-fade-in"
       onClick={onClose}
     >
       <div
